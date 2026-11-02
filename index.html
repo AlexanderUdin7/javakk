@@ -4,17 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        input, button {
+            margin: 10px;
+            padding: 5px;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background: 1px solid #f4f4f4;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
+    
+    <!-- input (untuk user ID) -->
+    <input type="text" id="userId" placeholder="Masukkan ID Pengguna">
+    <!-- butang (untuk panggil API) -->
+    <button onclick="getUser()">Cari Pengguna</button>
+    <!-- Bahagian paparan data pengguna (div) -->
+    <div id="output"></div>
+
     <script>
-        console.log(document); //root node
+        //root node
+        console.log(document);
 
-        console.log(document.documentElement); //struktur root node
+        //struktur root node
+        console.log(document.documentElement); 
 
-        console.log(document.body.childNodes); //child node dalam <body> bagi dokumen asas html
+        //child node dalam <body> bagi dokumen asas html
+        console.log(document.body.childNodes); 
 
-        console.log(document.querySelector('div#output')); //paparan console bagi elemen div#output
-        //elemen div#output tidak wujud dalam dokumen asas html, menyebabkan nilai null dipaparkan
+        //paparan console bagi elemen div#output
+        console.log(document.querySelector('div#output')); 
+    
+        //paparan console bagi elemen input#userId
+        console.log(document.querySelector('#userId')); 
+
+        // paparan console bagi Child Element dalam <body>
+        console.log(document.querySelector('body').children);
+
+        console.log(document.querySelector('#userId'));
+        console.log(document.querySelector('div#output'));
+            
+        // BOLEH TRY DEKAT CONSOLE SITE //
+        1// let button = document.querySelector('button');
+        2// console.log(button.parentElement);
+        3// console.log(button.nextElementSibling);
+        4// console.log(button.previousElementSibling);
+        
+        5// document.querySelectorAll('*').forEach(el => 
+         // console.log(el.tagName)); 
+
+        6// let all = document.querySelectorAll('*');
+         // let tags = [...new Set([...all].map el =>
+         //     el.tagName)];
+         // document.body.innerHTML +=
+         //     '<pre>${tags.join('\n>')}</pre>';
+        
+        function getUser() {
+            const id = document.getElementById('userId').value;
+            fetch(`https://jsonplaceholder.typicode.com/users/${id}`)   //fetch() - fungsi standard dalam javascript ES6
+                .then(response => response.json())  //.json() - Digunakan untuk tukar API response kepada objek JavaScript
+                .then (data => {    //then() - Digunakan untuk proses janji (promise)
+                    const output = `
+                        <p><strong>Nama : </strong> ${data.name}</p>
+                        <p><strong>Email : </strong> ${data.email}</p>
+                        <p><strong>Alamat : </strong> ${data.address.street}, ${data.address.city}</p>
+                    `;
+                    document.getElementById('output').innerHTML = output;
+                })
+                .catch(error => {
+                    document.getElementById('output').innerHTML = `<p>Pengguna tidak dijumpai.</p>`;
+                    console.error('Error:', error);
+                });
+        }
+        
+    
+    
     </script>
 </body>
 </html>
