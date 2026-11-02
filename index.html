@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(document); //root node
+
+        console.log(document.documentElement); //struktur root node
+
+        console.log(document.body.childNodes); //child node dalam <body> bagi dokumen asas html
+
+        console.log(document.querySelector('div#output')); //paparan console bagi elemen div#output
+        //elemen div#output tidak wujud dalam dokumen asas html, menyebabkan nilai null dipaparkan
+    </script>
+</body>
+</html>
