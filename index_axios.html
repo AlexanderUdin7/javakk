@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input, button {
+            margin: 10px;
+            padding: 5px;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background: 1px solid #f4f4f4;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    
+    <!-- input (untuk user ID) -->
+    <input type="text" id="userId" placeholder="Masukkan ID Pengguna">
+    <!-- butang (untuk panggil API) -->
+    <button onclick="getUser()">Cari Pengguna</button>
+    <!-- Bahagian paparan data pengguna (div) -->
+    <div id="output"></div>
+
+    <script>
+        function getUser() {
+            const id = document.getElementById('userId').value;
+            axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)   //Axios response terus dalam response.data berbanding kaedah fetch() yang perlu .then(response => response.json()).
+                .then(response => {
+                    const data = response.data;
+                    const output = `
+                        <p><strong>Nama : </strong> ${data.name}</p>
+                        <p><strong>Email : </strong> ${data.email}</p>
+                        <p><strong>Alamat : </strong> ${data.address.street}, ${data.address.city}</p>
+                    `;
+                    document.getElementById('output').innerHTML = output;
+                })
+                .catch(error => {
+                    document.getElementById('output').innerHTML = `<p>Pengguna tidak dijumpai.</p>`;
+                    });
+        }
+    </script>
+</body>
+</html>
