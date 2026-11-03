@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="order.css">
+</head>
+<body>
+    <div id="header">
+        <h1>Game</h1>
+        <nav class="navbar">
+            <a href="order.html">Order</a>
+            <!-- <a href="buy.html">Buy</a> -->
+        </nav>
+    </div>
+    <div class="content">
+            <h2>Order Information</h2>
+            <p>This is the order page.</p><hr>
+
+                <div class="card-container">
+
+                    <div class="card">
+                    <img src="https://m.media-amazon.com/images/I/916T5H6sCtL.jpg" height="200px" alt="gta v">
+                    <div class="card-content">
+                        <h3>Grand Theft Auto V</h3>
+                        <p>Price: $29.99</p>
+                        <p>Description: Grand Theft Auto V is an action-adventure game developed by Rockstar North and published by Rockstar Games.</p>
+                        <button onclick="buy()" id="pilihan">Add to Cart</button>
+                    </div>
+                </div>
+
+                    <div class="card">
+                    <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRGE0OfenBCqv_ZwAHHeGhP4h5eZtnWEmkAqIu9LljCHT74eyiMenS-8BTzSyIAy14_HIlCeQQBy16DL-lDSYeSczKgAMILwXCx92NaInP_wn3OTelT7nBs&usqp=CAc" height="200px" alt="gta v">
+                    <div class="card-content">
+                        <h3>FIFA 25</h3>
+                        <p>Price: $29.99</p>
+                        <p>Description: FIFA 25 is a football simulation video game developed by EA Sports.</p>
+                        <button onclick="buy()" id="pilihan">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <p id="keputusan"></p>
+        </div>
+
+        <script>
+            function buy() {
+            let pilih = document.getElementById('pilihan').value;
+            let keputusan = "";
+
+            switch(pilih) {
+        case '1' : 
+            pilih = "Buah Naga sedia untuk masuk ke rumah anda!";
+            break;
+        case '2' : 
+            pilih = "Buah Nanas sedia untuk masuk ke rumah anda!";
+            break;
+    }
+    document.getElementById('keputusan').innerHTML = "" + pilih;
+}
+        </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocoleter Padu</title>
+</head>
+<body>
+    <div id="borang">
+        
+            <label>Masukkan Nombor Ajaib : </label><br>
+            <!-- <input type="number" id="hargaBarang" step="0.01"> -->
+            <!-- <input type="number" id="jumlahBarang" step="0.01"> -->
+            <input type="number" id="hargaBarang">
+            <input type="number" id="jumlahBarang">
+            <button onclick="cocoleterPadu()">Kira</button>
+        
+            <p id="keputusan"></p>
+    </div>
+    <script>
+        function cocoleterPadu() {
+            let harga = parseFloat(document.getElementById("hargaBarang").value);
+            let jumlah = parseFloat(document.getElementById("jumlahBarang").value);
+            let keputusan = harga * jumlah;
+
+            document.getElementById("keputusan").innerHTML = "Jumlah Bayaran : RM" + keputusan;
+
+        }
+    </script>
+
+</body>
+</html>
